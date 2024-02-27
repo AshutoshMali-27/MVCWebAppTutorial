@@ -64,6 +64,18 @@ namespace MVCWebAppTutorial.Controllers
             return View(emp1);
         
         }
+        [HttpPost]
+        public ActionResult About(ClsCalculation objcalc)
+        {
+
+            int num1 = objcalc.num1;
+            int num2 = objcalc.num2;
+            int result = num2 + num1;
+
+            ViewBag.result = result;
+
+            return View();
+        }
 
         public ActionResult About()
         {
