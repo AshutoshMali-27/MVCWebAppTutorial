@@ -1,0 +1,107 @@
+﻿@model MVCWebAppTutorial.Models.ClsViewBag
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+ 
+<div class="row">
+
+
+    <h2>@ViewData["message"] </h2> <br />
+    <h2> @ViewData["CurrentTime"]</h2>
+    <ul>
+
+        @{
+            foreach (string i in (string[])ViewData["FruitsArray"])
+            {
+
+                <li> @i</li>
+            }
+        }
+    </ul>
+    <ul>
+        @{
+            foreach (string i in (List<string>)ViewData["Sportslist"])
+            {
+                <li>@i</li>
+            }
+        }
+    </ul>
+
+    @{
+        var a = (MVCWebAppTutorial.Models.clsViewData)ViewData["clsViewData"];
+
+
+    }
+    <p>@a.EmpName</p>
+    <p>@a.EmpID</p>
+    <p>@a.EmpDesignation</p>
+
+
+    <h2> @ViewBag.Message1</h2>
+    <h2> @ViewBag.CurrentDate1</h2>
+    @*<h2> @ViewBag.FruitArray1</h2>
+        <h2> @ViewBag.SportsList1</h2>*@
+    <ul>
+        @{
+            foreach (string i in ViewBag.FruitArray1)
+            {
+                <li> @i</li>
+            }
+        }
+    </ul>
+    <ul>
+        @{
+            foreach (string i in ViewBag.SportsList1)
+            {
+                <li> @i</li>
+            }
+        }
+    </ul>
+
+    @{
+        var c = ViewBag.ClsViewBag;
+    }
+    <p> @c.EmpDesignation1</p>
+    <p> @c.EmpName1</p>
+    <p> @c.EmpID1</p>
+
+    <h3> ViewData Data is =@ViewData["Var1"]</h3>
+    <h3> ViewBag Data is =@ViewBag.Var2</h3>
+    <h3> TempDdata Data is =@TempData["var3"]</h3>
+
+    @Html.ActionLink("Go to About Page", "About", "Home")
+    <br />
+    <a href="@Url.Action("About","Home")"> Go to About Page</a>
+    <br />
+    <br />
+
+
+    <h1> Strongly Typed View Data</h1>
+    <h3> @Model.EmpID1</h3>
+    <h3>@Model.EmpName1</h3>
+    <h3>@Model.EmpDesignation1</h3>
+
+
+
+</div>
+
+@Html.Partial("_Employee")
+<br />
+<br />
+@{ 
+    Html.RenderPartial("_Employee");
+}
+
+@{ 
+
+    var List = Html.Partial("_Employee");
+    List = new MvcHtmlString("<h3>Here is Student List</h3>" + List.ToString());
+}
+@List
+
+@using (Html.BeginForm())
+            {
+                <p>@Html.LabelFor(model=>model.EmpID1)</p> @Html.TextBoxFor(model=>model.EmpID1)
+            }
