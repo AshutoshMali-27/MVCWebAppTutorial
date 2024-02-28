@@ -6,12 +6,12 @@
 <h3>@ViewBag.Message</h3>
 
 
-@*<h3> ViewData Data is =@ViewData["Var1"]</h3>
+<h3> ViewData Data is =@ViewData["Var1"]</h3>
     <h3> ViewBag Data is =@ViewBag.Var2</h3>
-    <h3> TempData Data is =@TempData["var3"]</h3>*@
+    <h3> TempData Data is =@TempData["var3"]</h3>
 
 
-@*@using (Html.BeginForm())
+@using (Html.BeginForm())
 {
     <p>@Html.LabelFor(model => model.num1)  &nbsp; @Html.TextAreaFor(model => model.num1) </p>
     <p>@Html.LabelFor(model => model.num2)  &nbsp; @Html.TextAreaFor(model => model.num2) </p>
@@ -20,7 +20,7 @@
     <p>Addition Result is :@ViewBag.result </p>
 
 
-}*@
+}
 
 @using (Html.BeginForm())
     {
