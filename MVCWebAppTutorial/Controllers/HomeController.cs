@@ -64,15 +64,40 @@ namespace MVCWebAppTutorial.Controllers
             return View(emp1);
         
         }
+        //[HttpPost]
+        //public ActionResult About(ClsCalculation objcalc)
+        //{
+
+        //    int num1 = objcalc.num1;
+        //    int num2 = objcalc.num2;
+        //    int result = num2 + num1;
+
+        //    ViewBag.result = result;
+
+        //    return View();
+        //}
+
         [HttpPost]
-        public ActionResult About(ClsCalculation objcalc)
+        public ActionResult About(string FullName, string Age,string Email)
         {
+            if (FullName.Equals("") == true) {
 
-            int num1 = objcalc.num1;
-            int num2 = objcalc.num2;
-            int result = num2 + num1;
+                ModelState.AddModelError("FullName","Full Name is Required !!");
+            }
+            if (Age.Equals("") == true)
+            {
 
-            ViewBag.result = result;
+                ModelState.AddModelError("Age", "Age  is Required !!");
+            }
+            if (Email.Equals("") == true)
+            {
+
+                ModelState.AddModelError("Email", "Email is Required !!");
+            }
+            if (ModelState.IsValid == true)
+            {
+                ViewData["SuccessMessage"] = "<script> alert('Data has Been Submitted')</script>";
+            }
 
             return View();
         }

@@ -11,11 +11,31 @@
     <h3> TempData Data is =@TempData["var3"]</h3>*@
 
 
-@using (Html.BeginForm())
+@*@using (Html.BeginForm())
 {
     <p>@Html.LabelFor(model => model.num1)  &nbsp; @Html.TextAreaFor(model => model.num1) </p>
     <p>@Html.LabelFor(model => model.num2)  &nbsp; @Html.TextAreaFor(model => model.num2) </p>
 
-    <input type="submit" value="submit"/>
+    <input type="submit" value="submit" />
     <p>Addition Result is :@ViewBag.result </p>
-}
+
+
+}*@
+
+@using (Html.BeginForm())
+    {
+    <p>
+        Enter Name: @Html.TextBox("FullName")
+            @Html.ValidationMessage("FullName",new { @class="text-danger"})
+    </p>
+    <p> Enter Age:@Html.TextBox("Age")
+        @Html.ValidationMessage("Age", new { @class = "text-danger" })
+    </p>
+    <p>
+        Enter Email:@Html.TextBox("Email")
+            @Html.ValidationMessage("Email", new { @class = "text-danger" })
+    </p>
+
+    <input type="submit" value="Submit" />
+    @Html.Raw(ViewData["SuccessMessage"])
+    }
