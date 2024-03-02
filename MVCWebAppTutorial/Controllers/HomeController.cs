@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 
@@ -83,16 +84,26 @@ namespace MVCWebAppTutorial.Controllers
             if (FullName.Equals("") == true) {
 
                 ModelState.AddModelError("FullName","Full Name is Required !!");
+                ViewData["FullNameError"] = "*";
             }
             if (Age.Equals("") == true)
             {
 
                 ModelState.AddModelError("Age", "Age  is Required !!");
+                ViewData["AgeError"] = "*";
             }
             if (Email.Equals("") == true)
             {
 
                 ModelState.AddModelError("Email", "Email is Required !!");
+                ViewData["EmailError"] = "*";
+            }
+            else
+            {
+                //if (Regex.IsMatch)
+                //{
+
+                //}
             }
             if (ModelState.IsValid == true)
             {
@@ -109,9 +120,27 @@ namespace MVCWebAppTutorial.Controllers
             return View();
         }
 
+       
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Contact(ClsDataAnnotation e)
+        {
+
+
+            ViewBag.Message = "Your contact page.";
+
+
+            if(ModelState.IsValid == true)
+            {
+                ViewData["SuccessMessage"] = "<script>alert('Data has been Submitted')</script>";
+                ModelState.Clear();
+            }
 
             return View();
         }

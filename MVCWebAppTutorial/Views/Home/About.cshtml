@@ -21,20 +21,27 @@
 
 
 }
+<p>
+    @Html.ValidationSummary();
+</p>
 
 @using (Html.BeginForm())
     {
-    <p>
-        Enter Name: @Html.TextBox("FullName")
-            @Html.ValidationMessage("FullName",new { @class="text-danger"})
-    </p>
-    <p> Enter Age:@Html.TextBox("Age")
-        @Html.ValidationMessage("Age", new { @class = "text-danger" })
-    </p>
-    <p>
-        Enter Email:@Html.TextBox("Email")
-            @Html.ValidationMessage("Email", new { @class = "text-danger" })
-    </p>
+<p>
+    Enter Name: @Html.TextBox("FullName")
+    @ViewData["FullNameError"] 
+    @*@Html.ValidationMessage("FullName",new { @class="text-danger"})*@
+</p>
+<p>
+    Enter Age:@Html.TextBox("Age")
+    @ViewData["AgeError"]
+    @*@Html.ValidationMessage("Age", new { @class = "text-danger" })*@
+</p>
+<p>
+    Enter Email:@Html.TextBox("Email")
+    @ViewData["EmailError"]
+    @*@Html.ValidationMessage("Email", new { @class = "text-danger" })*@
+</p>
 
     <input type="submit" value="Submit" />
     @Html.Raw(ViewData["SuccessMessage"])

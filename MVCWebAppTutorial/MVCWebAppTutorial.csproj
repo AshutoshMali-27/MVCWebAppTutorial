@@ -125,6 +125,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ClsCalculation.cs" />
+    <Compile Include="Models\ClsDataAnnotation.cs" />
     <Compile Include="Models\ClsViewBag.cs" />
     <Compile Include="Models\clsViewData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

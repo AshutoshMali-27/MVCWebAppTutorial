@@ -1,17 +1,35 @@
-﻿@{
+﻿@model  MVCWebAppTutorial.Models.ClsDataAnnotation
+
+@{
     ViewBag.Title = "Contact";
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+@using (Html.BeginForm())
+{
+    <p>
+        @Html.LabelFor(model => model.EmployeeId) &nbsp; @Html.TextAreaFor(model => model.EmployeeId)
+        @Html.ValidationMessageFor(model => model.EmployeeId, "", new { @class = "text-danger" })
+    </p>
+    <p>
+        @Html.LabelFor(model => model.EmployeeName) &nbsp; @Html.TextAreaFor(model => model.EmployeeName)
+        @Html.ValidationMessageFor(model => model.EmployeeName, "", new { @class = "text-danger" })
+    </p>
+    <p>
+        @Html.LabelFor(model => model.EmployeeAge) &nbsp; @Html.TextAreaFor(model => model.EmployeeAge)
+        @Html.ValidationMessageFor(model => model.EmployeeAge, "", new { @class = "text-danger" })
+    </p>
+    <p>
+        @Html.LabelFor(model => model.EmployeeGender) &nbsp; @Html.TextAreaFor(model => model.EmployeeGender)
+        @Html.ValidationMessageFor(model => model.EmployeeGender, "", new { @class = "text-danger" })
+    </p>
+    <p>
+        @Html.LabelFor(model => model.EmployeeEmail) &nbsp; @Html.TextAreaFor(model => model.EmployeeEmail)
+        @Html.ValidationMessageFor(model => model.EmployeeEmail, "", new { @class = "text-danger" })
+    </p>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+    <input type="submit" value="Submit" />
+    @Html.Raw(ViewData["SuccessMessage"])
+
+}
